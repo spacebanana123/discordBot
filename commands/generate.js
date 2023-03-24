@@ -7,7 +7,7 @@ async function generate(interaction){
     defer(interaction);
     let response = await queryImage({"inputs":text})
     let stream = require('fs').createReadStream("please_wait.jpg");
-    let res = editDeferFile(interaction,
+    let res = await editDeferFile(interaction,
         {"embeds": [{
       		"type": "rich",
       		"title": "Image Generated",

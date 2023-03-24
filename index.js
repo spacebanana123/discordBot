@@ -18,7 +18,7 @@ const axios = require('axios')
 const express = require('express');
 const discord_api = axios.create({
   baseURL: 'https://discord.com/api/',
-  timeout: 5000,
+  timeout: 10000,
   headers: {
 	"Access-Control-Allow-Origin": "*",
 	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH",
