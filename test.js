@@ -28,11 +28,11 @@ async function query(data) {
 	return result;
 }
 async function f1() {
-    query({"inputs": "Six realistic bananas that fart"}).then(async (response) => {
+    query({"inputs": "a ton of bananas"}).then(async (response) => {
         while("error" in response) {
             console.log(response.error);
             sleep(25000);
-            response = await query({"inputs": "Six realistic bananas that fart"});
+            response = await query({"inputs": "a ton of bananas"});
         }
 	    const arrayBuffer = await response.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
