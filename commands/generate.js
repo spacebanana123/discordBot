@@ -6,8 +6,9 @@ async function generate(interaction){
     console.log("Image generate input: " + text)
     defer(interaction);
     let response = await queryImage({"inputs":text})
-    let stream = require('fs').createReadStream("please_wait.jpg");
-    let res = await editDeferFile(interaction,
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    let res = await editDeferBuffer(interaction,
         {"embeds": [{
       		"type": "rich",
       		"title": "Image Generated",
@@ -16,7 +17,7 @@ async function generate(interaction){
       		"image": {
         		"url": "attachment://please_wait.jpg"
       		  }
-        }]}, stream);
+        }]}, buffer);
     console.log(res)
     return 0;
 }
