@@ -6,6 +6,11 @@ async function generate(interaction){
     console.log("Image generate input: " + text)
     defer(interaction);
     let response = await queryImage({"inputs":text})
+    while("error" in response) {
+        console.log(response.error);
+        sleep(25000);
+        response = await query({"inputs": text});
+    }
     const arrayBuffer = await response.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     let res = await editDeferBuffer(interaction,

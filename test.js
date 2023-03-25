@@ -9,6 +9,12 @@ function bufferToStream(myBuffer) {
     return tmp;
 }
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
+
 async function query(data) {
 	const response = await fetch(
 		"https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
@@ -22,7 +28,12 @@ async function query(data) {
 	return result;
 }
 async function f1() {
-    query({"inputs": "Six realistic bananas"}).then(async (response) => {
+    query({"inputs": "Six realistic bananas that fart"}).then(async (response) => {
+        while("error" in response) {
+            console.log(response.error);
+            sleep(25000);
+            response = await query({"inputs": "Six realistic bananas that fart"});
+        }
 	    const arrayBuffer = await response.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
         createWriteStream("test.jpg").write(buffer);
