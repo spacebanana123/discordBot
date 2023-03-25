@@ -38,6 +38,7 @@ const app = express();
 app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
   const interaction = req.body;
   await handle_interaction(interaction);
+  console.log("Interaction handled")
   return res.status(200).end();
 });
 
