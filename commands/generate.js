@@ -13,7 +13,7 @@ async function generate(interaction){
     defer(interaction);
     let response = await queryImage({"inputs":text})
     console.log(response);
-    while("error" in response) {
+    while(response.type == "application/json") {
         console.log(response);
         await sleep(25000);
         response = await query({"inputs": text});
