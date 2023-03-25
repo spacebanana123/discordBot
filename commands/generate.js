@@ -12,7 +12,8 @@ async function generate(interaction){
         response = await query({"inputs": text});
     }
     if (response.status != 200) {
-        console.log(response.error);
+        console.log("Error: " + response.status);
+        console.log(response);
         return 1;
     }
     const arrayBuffer = await response.arrayBuffer();
