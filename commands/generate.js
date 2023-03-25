@@ -15,7 +15,7 @@ async function generate(interaction){
       		"color": 0x15c7df,
             "description": `Prompt: ${text}`,
       		"image": {
-        		"url": "attachment://please_wait.jpg"
+        		"url": "attachment://easter_egg.jpg"
       		  }
         }]}, buffer);
     console.log(res)
