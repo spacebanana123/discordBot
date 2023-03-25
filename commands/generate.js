@@ -11,6 +11,10 @@ async function generate(interaction){
         sleep(25000);
         response = await query({"inputs": text});
     }
+    if (response.status != 200) {
+        console.log(response.error);
+        return 1;
+    }
     const arrayBuffer = await response.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     let res = await editDeferBuffer(interaction,
