@@ -18,7 +18,6 @@ async function generate(interaction){
         		"url": "attachment://easter_egg.jpg"
       		  }
         }]}, buffer);
-    console.log(res)
     return 0;
 }
 exports.generate = generate;
