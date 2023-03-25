@@ -1,6 +1,12 @@
 const { queryImage } = require("../query")
 const { defer, editDeferBuffer } = require("../discord_request");
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
+
 async function generate(interaction){
     let text = interaction.data.options[0].value
     console.log("Image generate input: " + text)
@@ -8,7 +14,7 @@ async function generate(interaction){
     let response = await queryImage({"inputs":text})
     while("error" in response) {
         console.log(response);
-        await sleep(25000);
+        sleep(25000);
         response = await query({"inputs": text});
     }
     const arrayBuffer = await response.arrayBuffer();
