@@ -23,6 +23,9 @@ async function generate(interaction){
         		"url": "attachment://easter_egg.jpg"
       		  }
         }]}, buffer);
+    if(res.status != 200) {
+        console.log(res);
+    }
     return 0;
 }
 exports.generate = generate;
