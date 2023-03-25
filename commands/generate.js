@@ -14,9 +14,9 @@ async function generate(interaction){
     let response = await queryImage({"inputs":text})
     console.log(response);
     while(response.type == "application/json") {
-        console.log(response);
         await sleep(25000);
         response = await query({"inputs": text});
+        console.log(response);
     }
     const arrayBuffer = await response.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
