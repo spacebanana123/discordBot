@@ -9,7 +9,7 @@ function bufferToStream(myBuffer) {
     return tmp;
 }
 
-function sleep(ms) {
+async function sleep(ms) {
     return new Promise((resolve) => {
       setTimeout(resolve, ms);
     });
@@ -17,7 +17,7 @@ function sleep(ms) {
 
 async function query(data) {
 	const response = await fetch(
-		"https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
+		"https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2",
 		{
 			headers: { Authorization: "Bearer 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" },
 			method: "POST",
@@ -28,11 +28,11 @@ async function query(data) {
 	return result;
 }
 async function f1() {
-    query({"inputs": "a ton of bananas"}).then(async (response) => {
+    query({"inputs": "a ton of bananas!"}).then(async (response) => {
         while("error" in response) {
-            console.log(response.error);
-            sleep(25000);
-            response = await query({"inputs": "a ton of bananas"});
+            console.log(response);
+            await sleep(25000);
+            response = await query({"inputs": "a ton of bananas!"});
         }
 	    const arrayBuffer = await response.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
