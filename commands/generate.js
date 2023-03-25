@@ -7,7 +7,7 @@ async function generate(interaction){
     defer(interaction);
     let response = await queryImage({"inputs":text})
     while("error" in response) {
-        console.log(response.error);
+        console.log(response);
         sleep(25000);
         response = await query({"inputs": text});
     }
