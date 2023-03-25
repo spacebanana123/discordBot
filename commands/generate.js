@@ -1,5 +1,5 @@
 const { queryImage } = require("../query")
-const { defer, editDeferFile } = require("../discord_request");
+const { defer, editDeferBuffer } = require("../discord_request");
 
 async function generate(interaction){
     let text = interaction.data.options[0].value
