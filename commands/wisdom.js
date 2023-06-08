@@ -33,6 +33,6 @@ async function wisdom(interaction) {
 		  ]
 		}
 	);
-	console.log(response.generated_text)
+	console.log(response)
 }
 exports.wisdom = wisdom;
