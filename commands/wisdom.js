@@ -9,7 +9,7 @@ async function wisdom(interaction) {
 		"inputs": `The a wise old person which knows all was asked "${text}" and the mage responded, `,
 		"parameters": {
 			"max_new_tokens": 100,
-			"temperature": 0.5,
+			"temperature": 0.25,
 			"max_time": 2.0,
 			"repetition_penalty": 2,
 		}
