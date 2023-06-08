@@ -13,6 +13,8 @@ async function wisdom(interaction) {
 			"max_time": 2.0
 		}
 	});
+	let promtLen = `The a wise old person which knows all was asked "${text}" and the mage responded, `.length;
+	let wisdom = response[0].generated_text.slice(promtLen);
 	editDefer(interaction, {
 		"embeds": [
 			{
@@ -26,13 +28,13 @@ async function wisdom(interaction) {
 				},
 				{
 				  "name": 'Wisdom:',
-				  "value": response[0].generated_text
+				  "value": wisdom
 				}
 			  ]
 			}
 		  ]
 		}
 	);
-	console.log(response[0].generated_text)
+	console.log(wisdom)
 }
 exports.wisdom = wisdom;
