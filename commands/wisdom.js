@@ -26,13 +26,13 @@ async function wisdom(interaction) {
 				},
 				{
 				  "name": 'Wisdom:',
-				  "value": response.generated_text
+				  "value": response[0].generated_text
 				}
 			  ]
 			}
 		  ]
 		}
 	);
-	console.log(response)
+	console.log(response[0].generated_text)
 }
 exports.wisdom = wisdom;
