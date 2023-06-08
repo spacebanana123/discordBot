@@ -18,6 +18,9 @@ async function wisdom(interaction) {
 	if (wisdom[-1] == "\""){
 		wisdom = wisdom.slice(0, -1);
 	}
+	if (wisdom[-1] == "The wise old person"){
+		wisdom = wisdom.slice(0, -21);
+	}
 	editDefer(interaction, {
 		"embeds": [
 			{
