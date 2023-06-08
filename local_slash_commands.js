@@ -22,6 +22,18 @@ const local_slash_commands = [
     ]
   },
   {
+    "name": "wisdom",
+    "description": "gives okay wisdom",
+    "options": [
+      {
+        "name": "text",
+        "description": "your question",
+        "type": 3,
+        "required": true
+      }
+    ]
+  },
+  {
     "name": "generate",
     "description": "generates an image",
     "options": [

@@ -1,7 +1,7 @@
-const { CHAT_MODEL_URL, HUGGINGFACE_TOKEN, IMAGE_MODEL_URL } = require("./index");
+const { CHAT_MODEL_URL, HUGGINGFACE_TOKEN, IMAGE_MODEL_URL, TEXTGEN_MODEL_URL } = require("./index");
 
 
-async function query(data) {
+async function queryConversation(data) {
   try {
     const response = await fetch(CHAT_MODEL_URL, {
       headers: { Authorization: "Bearer " + HUGGINGFACE_TOKEN },
@@ -16,7 +16,7 @@ async function query(data) {
     throw new Error("Unable to process the request.");
   }
 }
-exports.query = query;
+exports.queryConversation = queryConversation;
 
 async function queryImage(data) {
   const response = await fetch(
@@ -31,3 +31,18 @@ async function queryImage(data) {
   return result;
 }
 exports.queryImage = queryImage;
+
+async function queryTextGen(data) {
+  const response = await fetch(
+    TEXTGEN_MODEL_URL,
+    {
+      headers: { Authorization: "Bearer " + HUGGINGFACE_TOKEN },
+      method: "POST",
+      body: JSON.stringify(data),
+    }
+  );
+  const result = await response.json();
+  return result;
+}
+
+exports.queryTextGen = queryTextGen;

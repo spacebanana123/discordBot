@@ -2,17 +2,19 @@
 // const { clientId, guildId, token, publicKey } = require('./config.json');
 require('dotenv').config()
 const APPLICATION_ID = process.env.APPLICATION_ID
-const TOKEN = process.env.TOKEN 
+const TOKEN = process.env.TOKEN
 const PUBLIC_KEY = process.env.PUBLIC_KEY || 'not set'
 const HUGGINGFACE_TOKEN = process.env.HUGGINGFACE_TOKEN
-const CHAT_MODEL_URL = process.env.CHAT_MODEL_URL 
+const CHAT_MODEL_URL = process.env.CHAT_MODEL_URL
 const MAX_PAST_INPUTS = process.env.MAX_PAST_INPUTS
-const IMAGE_MODEL_URL = process.env.IMAGE_MODEL_URL 
+const IMAGE_MODEL_URL = process.env.IMAGE_MODEL_URL
+const TEXTGEN_MODEL_URL = process.env.TEXTGEN_MODEL_URL
 exports.APPLICATION_ID = APPLICATION_ID
 exports.HUGGINGFACE_TOKEN = HUGGINGFACE_TOKEN
 exports.CHAT_MODEL_URL = CHAT_MODEL_URL
 exports.MAX_PAST_INPUTS = MAX_PAST_INPUTS
 exports.IMAGE_MODEL_URL = IMAGE_MODEL_URL
+exports.TEXTGEN_MODEL_URL = TEXTGEN_MODEL_URL
 
 const axios = require('axios')
 const express = require('express');
@@ -20,10 +22,10 @@ const discord_api = axios.create({
   baseURL: 'https://discord.com/api/',
   timeout: 10000,
   headers: {
-	"Access-Control-Allow-Origin": "*",
-	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH",
-	"Access-Control-Allow-Headers": "Authorization",
-	"Authorization": `Bot ${TOKEN}`
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH",
+    "Access-Control-Allow-Headers": "Authorization",
+    "Authorization": `Bot ${TOKEN}`
   }
 });
 exports.discord_api = discord_api;
@@ -42,10 +44,9 @@ app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
   return res.status(200).end();
 });
 
-app.get('/register_commands', async (req,res) =>{
+app.get('/register_commands', async (req, res) => {
   let slash_commands = local_slash_commands
-  try
-  {
+  try {
     // api docs - https://discord.com/developers/docs/interactions/application-commands#create-global-application-command
     let discord_response = await discord_api.put(
       `/applications/${APPLICATION_ID}/commands`,
@@ -53,21 +54,20 @@ app.get('/register_commands', async (req,res) =>{
     )
     console.log(discord_response.data)
     return res.send('commands have been registered')
-  }catch(e){
+  } catch (e) {
     console.error(e.code)
     console.error(e.response?.data)
     return res.send(`${e.code} error from discord`)
   }
 })
 
-app.get('/delete_commands', async (req,res) =>{
-  try
-  {
+app.get('/delete_commands', async (req, res) => {
+  try {
     let commands = await discord_api.get(`/applications/${APPLICATION_ID}/commands`)
     let command_ids = commands.data.map((command) => command.id)
-    for(let i = 0; i < command_ids.length; i++){
+    for (let i = 0; i < command_ids.length; i++) {
       let command_id = command_ids[i]
-      if(delete_list.includes(commands.name)){
+      if (delete_list.includes(commands.name)) {
         console.log(`Deleting ${commands.name}`)
         await discord_api.delete(`/applications/${APPLICATION_ID}/commands/${command_id}`)
       }
@@ -76,7 +76,7 @@ app.get('/delete_commands', async (req,res) =>{
       }
     }
   }
-  catch(e){
+  catch (e) {
     console.error(e.code)
     console.error(e.response?.data)
     return res.send(`${e.code} error from discord`)
@@ -84,7 +84,7 @@ app.get('/delete_commands', async (req,res) =>{
 })
 
 
-app.get('/', async (req,res) =>{
+app.get('/', async (req, res) => {
   return res.send('Follow documentation ')
 })
 

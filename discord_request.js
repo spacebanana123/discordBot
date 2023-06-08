@@ -29,11 +29,11 @@ async function respond_interaction(interaction, message) {
 }
 exports.respond_interaction = respond_interaction;
 
-async function editDeferBuffer(interaction, message, buffer){
+async function editDeferBuffer(interaction, message, buffer) {
   const FormData = require('form-data');
   const form = new FormData();
   form.append('payload_json', JSON.stringify(message));
-  form.append('file', buffer, { filename : 'easter_egg.jpg' });
+  form.append('file', buffer, { filename: 'easter_egg.jpg' });
   return await discord_api.patch(`/webhooks/${APPLICATION_ID}/${interaction.token}/messages/@original`, form)
 }
 exports.editDeferBuffer = editDeferBuffer;

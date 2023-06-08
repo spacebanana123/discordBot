@@ -3,18 +3,19 @@ const { dm } = require("./commands/dm")
 const { respond } = require("./commands/respond")
 const { generate } = require("./commands/generate")
 const { ping } = require("./discord_request")
+const { wisdom } = require("./commands/wisdom")
 
-async function handle_interaction(interaction){
+async function handle_interaction(interaction) {
     console.log("Interaction received")
-    if(interaction.type == 1){
+    if (interaction.type == 1) {
         // Ping
         console.log("Ping received")
         ping(interaction);
     }
-    if(interaction.type == 2){
+    if (interaction.type == 2) {
         // Application Command
         console.log(interaction.data.name)
-        switch(interaction.data.name){
+        switch (interaction.data.name) {
             case 'yo':
                 await yo(interaction);
                 break;
@@ -26,6 +27,9 @@ async function handle_interaction(interaction){
                 break;
             case 'generate':
                 await generate(interaction);
+                break;
+            case 'wisdom':
+                await wisdom(interaction);
                 break;
             default:
                 console.log("Unknown command: " + interaction.data.name)
