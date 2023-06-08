@@ -14,7 +14,7 @@ async function wisdom(interaction) {
 		}
 	});
 	let promtLen = `The a wise old person which knows all was asked "${text}" and the mage responded, `.length;
-	let wisdom = response[0].generated_text.slice(promtLen + 1);
+	let wisdom = response[0].generated_text.slice(promtLen + 2);
 	if (wisdom[-1] == "\""){
 		wisdom = wisdom.slice(0, -1);
 	}
