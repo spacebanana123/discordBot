@@ -25,7 +25,7 @@ async function wisdom(interaction) {
 	editDefer(interaction, {
 		"embeds": [
 			{
-			  "title": "Ask DinoBot",
+			  "title": "The Voice of the DinoBot",
 			  "type": "rich",
 			  "color": 0x15c7df,
 			  "fields": [
