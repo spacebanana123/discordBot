@@ -10,7 +10,8 @@ async function wisdom(interaction) {
 		"parameters": {
 			"max_new_tokens": 100,
 			"temperature": 0.5,
-			"max_time": 2.0
+			"max_time": 2.0,
+			"repetition_penalty": 2,
 		}
 	});
 	let promtLen = `The a wise old person which knows all was asked "${text}" and the mage responded, `.length;
