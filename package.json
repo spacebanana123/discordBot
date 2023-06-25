@@ -16,8 +16,8 @@
     "express": "^4.18.1",
     "fs": "^0.0.1-security",
     "imgur": "^2.2.0",
-    "pi_wasm": "^0.1.0",
     "package.json": "^0.0.0",
+    "pi_wasm": "file:pi_wasm",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
