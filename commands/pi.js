@@ -1,11 +1,9 @@
 const { respond_interaction } = require("../discord_request");
+const { pi_calc } = require("../pi_wasm/pi_wasm.js");
 
 async function pi(interaction) {
     let n = interaction.data.options[0].value
-    let piCalculated = 0;
-    import("../pi_wasm/pi_wasm.js").then((js) => {
-        piCalculated = js.pi_calc(n)
-    });
+    let piCalculated = pi_calc(n)
     respond_interaction(interaction, {
         "embeds": [
             {
