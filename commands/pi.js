@@ -1,5 +1,5 @@
 const { respond_interaction } = require("../discord_request");
-const { pi_calc } = require("../pi_wasm/pi_wasm.js");
+const { pi_calc } = require("../node_modules/pi_wasm/pi_wasm.js");
 
 async function pi(interaction) {
     let n = interaction.data.options[0].value
