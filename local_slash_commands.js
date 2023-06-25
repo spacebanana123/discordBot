@@ -22,6 +22,20 @@ const local_slash_commands = [
     ]
   },
   {
+    "name": "pi",
+    "description": "pi of some precision",
+    "options": [
+      {
+        "name": "precision",
+        "description": "number of fractions used to calculate pi",
+        "type": 4,
+        "required": true,
+        "min_value": 1,
+        "max_value": 170
+      }
+    ]
+  },
+  {
     "name": "wisdom",
     "description": "gives okay wisdom",
     "options": [

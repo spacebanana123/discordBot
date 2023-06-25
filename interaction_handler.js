@@ -4,6 +4,7 @@ const { respond } = require("./commands/respond")
 const { generate } = require("./commands/generate")
 const { ping } = require("./discord_request")
 const { wisdom } = require("./commands/wisdom")
+const { pi } = require("./commands/pi")
 
 async function handle_interaction(interaction) {
     console.log("Interaction received")
@@ -30,6 +31,9 @@ async function handle_interaction(interaction) {
                 break;
             case 'wisdom':
                 await wisdom(interaction);
+                break;
+            case 'pi':
+                await pi(interaction);
                 break;
             default:
                 console.log("Unknown command: " + interaction.data.name)
