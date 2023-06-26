@@ -1,6 +1,5 @@
 const { respond_interaction } = require("../discord_request");
 const Big = require('big.js');
-const Big = require('big.js');
 
 function falling_factorial(n, k) {
 	let result = new Big(1);
