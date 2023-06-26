@@ -45,6 +45,7 @@ async function pi_calc(n) {
 }
 
 async function pi(interaction) {
+	defer(interaction);
 	let n = interaction.data.options[0].value
 	let piCalculated = await pi_calc(n)
 	console.log(piCalculated)
