@@ -50,7 +50,7 @@ async function pi(interaction) {
 	let piCalculated = await pi_calc(n)
 	piCalculated = piCalculated.toString()
 	console.log(piCalculated)
-	editDefer(interaction, {
+	await editDefer(interaction, {
 		"embeds": [
 			{
 			  "title": "DinoBot does Pi",
