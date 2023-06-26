@@ -18,14 +18,14 @@ async function factorial(n) {
 }
 
 async function coefficient(n, k) {
-	return falling_factorial(n, k).div(factorial(k));
+	return (await falling_factorial(n, k)).div(await factorial(k));
 }
 
 async function nth_term(n, r) {
 	let k = new Big(-1);
 	let x = new Big(r.pow(2 * n + 1))
 	k = k.pow(n)
-	k = k.times(coefficient(r, n))
+	k = k.times(await coefficient(r, n))
 	k = k.times(x)
 	k = k.div(2 * n + 1)
 	return k;
@@ -46,7 +46,7 @@ async function pi_calc(n) {
 
 async function pi(interaction) {
 	let n = interaction.data.options[0].value
-	let piCalculated = pi_calc(n)
+	let piCalculated = await pi_calc(n)
 	console.log(piCalculated)
 	respond_interaction(interaction, {
 		"embeds": [
