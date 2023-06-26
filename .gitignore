@@ -1,5 +1,5 @@
+node_modules
 .env
 config.json
 *_backup_*
 test_local.js
-node_modules
