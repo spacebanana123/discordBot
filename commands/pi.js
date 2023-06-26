@@ -48,25 +48,25 @@ async function pi(interaction) {
 	let n = interaction.data.options[0].value
 	let piCalculated = await pi_calc(n)
 	console.log(piCalculated)
-	let x = await respond_interaction(interaction, {
+	editDefer(interaction, {
 		"embeds": [
 			{
-				"title": "DinoBot Does Pi",
-				"type": "rich",
-				"color": 0x15c7df,
-				"fields": [
-					{
-						"name": 'Number of fractions: ' + n,
-						"value": "\u200B"
-					},
-					{
-						"name": 'Pi calculated: ',
-						"value": piCalculated
-					}
-				]
+			  "title": "DinoBot does Pi",
+			  "type": "rich",
+			  "color": 0x15c7df,
+			  "fields": [
+				{
+				  "name": 'Number of fractions used:',
+				  "value": n
+				},
+				{
+				  "name": 'Pi calculated:',
+				  "value": piCalculated
+				}
+			  ]
 			}
-		]
-	});
-	console.log(x)
+		  ]
+		}
+	);
 }
 exports.pi = pi;
