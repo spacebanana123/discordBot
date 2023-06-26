@@ -49,7 +49,7 @@ async function pi(interaction) {
 	let n = interaction.data.options[0].value
 	let piCalculated = await pi_calc(n)
 	console.log(piCalculated)
-	editDefer(interaction, {
+	let x = editDefer(interaction, {
 		"embeds": [
 			{
 			  "title": "DinoBot does Pi",
@@ -69,5 +69,6 @@ async function pi(interaction) {
 		  ]
 		}
 	);
+	console.log(x)
 }
 exports.pi = pi;
