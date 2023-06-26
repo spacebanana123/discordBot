@@ -31,7 +31,7 @@ const local_slash_commands = [
         "type": 4,
         "required": true,
         "min_value": 1,
-        "max_value": 170
+        "max_value": 1000
       }
     ]
   },
