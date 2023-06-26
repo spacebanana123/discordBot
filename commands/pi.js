@@ -57,6 +57,7 @@ async function pi(interaction) {
 				"fields": [
 					{
 						"name": 'Number of fractions: ' + n,
+						"value": "\u200B"
 					},
 					{
 						"name": 'Pi calculated: ',
