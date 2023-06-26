@@ -1,4 +1,4 @@
-const { respond_interaction } = require("../discord_request");
+const { defer, editDefer } = require("../discord_request");
 const Big = require('big.js');
 
 async function falling_factorial(n, k) {
