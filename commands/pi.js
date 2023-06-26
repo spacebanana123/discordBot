@@ -48,8 +48,8 @@ async function pi(interaction) {
 	defer(interaction);
 	let n = interaction.data.options[0].value
 	let piCalculated = await pi_calc(n)
-	console.log(piCalculated)
 	piCalculated = piCalculated.toString()
+	console.log(piCalculated)
 	let x = await editDefer(interaction, {
 		"embeds": [
 			{
