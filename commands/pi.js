@@ -59,7 +59,7 @@ async function pi(interaction) {
 			  "fields": [
 				{
 				  "name": 'Number of fractions used:',
-				  "value": n.toString()
+				  "value": n
 				},
 				{
 				  "name": 'Pi calculated:',
